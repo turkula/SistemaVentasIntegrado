@@ -2,8 +2,8 @@
 ## Universidad Nacional de Lanús - Licenciatura en Sistemas
 ## Prueba de Software - TP Nº 1 - Año: 2025
 
-**Estudiante:** Luca
-**Grupo:** GRUPOXX - UNLA - Prueba de Software - TP1
+
+**Grupo:** GRUPO 5 - UNLA - Prueba de Software - TP1
 
 ---
 
