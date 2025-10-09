@@ -90,15 +90,17 @@ public class SistemaVentasIntegracionTest {
         assertEquals("Pedro", sistema.getLstClientes().get(sistema.getLstClientes().size() - 1).getNombre());
     }
 
-    // 6. Agregar una nueva sucursal
-    @Test
-    void test06AgregarSucursal() throws Exception {
-        assertTrue(sistema.agregarSucursal("La Plata", "7", 123, -34.921f, -57.954f, 2214440000L,
-                "Carlos", "Pérez", LocalDate.of(1980, 5, 10), 12345678L, 40, 200000f));
-        Sucursal s = sistema.traerSucursal(1);
-        assertNotNull(s);
-        assertEquals("La Plata", s.getUbicacion().getCiudad());
-    }
+// 6. Agregar una nueva sucursal
+	@Test
+	void test06AgregarSucursal() throws Exception {
+		assertTrue(sistema.agregarSucursal("La Plata", "7", 123, -34.921f, -57.954f, 2214440000L, "Carlos", "Pérez",
+				LocalDate.of(1980, 5, 10), 12345678L, 40, 200000f));
+
+		// Obtener la última sucursal agregada de forma segura
+		Sucursal s = sistema.getLstSucursales().get(sistema.getLstSucursales().size() - 1);
+		assertNotNull(s);
+		assertEquals("La Plata", s.getUbicacion().getCiudad());
+	}
 
     // 7. Asignar un nuevo gerente a sucursal existente
     @Test
