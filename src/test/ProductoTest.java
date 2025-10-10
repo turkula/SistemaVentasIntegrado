@@ -30,7 +30,7 @@ class ProductoTest {
 	void testActivarProducto() {
 		producto.activarProducto();
 		boolean estado = producto.isStatus();
-		assertFalse(estado,"El estado del producto debería ser verdadero");
+		assertTrue(estado,"El estado del producto debería ser verdadero");
 	}
 
 }
