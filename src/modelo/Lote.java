@@ -1,6 +1,7 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class Lote {
 	
@@ -69,7 +70,29 @@ public class Lote {
 	public void setFechaIngreso(LocalDate fechaIngreso) {
 		this.fechaIngreso = fechaIngreso;
 	}
-
+	
+	public float calcularPorcentajeRestante() {
+		if (cantidadInicial == 0) return 0;
+		return (cantidadActual * 100)/cantidadInicial;
+	}
+	
+	public long calcularDiasDesdeIngreso(LocalDate fechaActual) {
+		return ChronoUnit.DAYS.between(fechaIngreso, fechaActual);
+	}
+	
+	public boolean puedeOfertarse(LocalDate fechaActual) {
+		if (calcularDiasDesdeIngreso(fechaActual) > 60) {
+			return true;
+		}return false;
+	}
+	
+	public void reiniciarStock() {
+		cantidadActual = cantidadInicial;
+	}
+	
+	public int calcularCantidadVendida() {
+		return cantidadInicial - cantidadActual;
+	}
 
 	@Override
 	public String toString() {

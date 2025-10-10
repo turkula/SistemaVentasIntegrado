@@ -1,8 +1,9 @@
 package modelo;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
-public abstract class Empleado extends Persona{
+public class Empleado extends Persona{
 	
 	protected int horasPorJornada;
 	protected float sueldoBasico;
@@ -34,7 +35,24 @@ public abstract class Empleado extends Persona{
 		this.sueldoBasico = sueldoBasico;
 	}
 	
+	public float calcularSueldoPorHoras(int horas) {
+		float sueldoPorHora = this.sueldoBasico / this.horasPorJornada;
+		return sueldoPorHora * horas;
+	}
 	
+	public long calcularDiasHastaCumpleanios(LocalDate fechaActual) {
+		LocalDate fechaDeCumpleanios = LocalDate.of(fechaActual.getYear(), this.fechaNacimiento.getMonth(),this.fechaNacimiento.getDayOfMonth());
+	
+		if (fechaDeCumpleanios.isBefore(fechaActual) || fechaDeCumpleanios.equals(fechaActual)) {
+			fechaDeCumpleanios = fechaDeCumpleanios.plusYears(1);
+		}
+		
+		return ChronoUnit.DAYS.between(fechaActual, fechaDeCumpleanios);
+	}
+	
+	public long calcularAntiguedad(LocalDate fechaIngreso, LocalDate fechaActual) {
+		return ChronoUnit.YEARS.between(fechaIngreso, fechaActual);
+	}
 	
 	
 
